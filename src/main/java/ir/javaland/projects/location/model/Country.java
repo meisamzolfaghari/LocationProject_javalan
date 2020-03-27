@@ -2,6 +2,7 @@ package ir.javaland.projects.location.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Country {
@@ -16,8 +17,8 @@ public class Country {
     @Column(name = "COUNTRY_NAME")
     private String countryName;
 
-    @OneToOne
-    private Location location;
+    @OneToMany(mappedBy = "country")
+    private Set<Location> locations;
 
     public Country() {
     }
@@ -27,10 +28,10 @@ public class Country {
         this.countryName = countryName;
     }
 
-    public Country(String countryCode, String countryName, Location location) {
+    public Country(String countryCode, String countryName, Set<Location> locations) {
         this.countryCode = countryCode;
         this.countryName = countryName;
-        this.location = location;
+        this.locations = locations;
     }
 
     public Long getId() {
@@ -53,12 +54,12 @@ public class Country {
         this.countryName = countryName;
     }
 
-    public Location getLocation() {
-        return location;
+    public Set<Location> getLocations() {
+        return locations;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocations(Set<Location> locations) {
+        this.locations = locations;
     }
 
     @Override

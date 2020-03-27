@@ -22,8 +22,8 @@ public class Location {
     @Column(name = "STATE_PROVINCE")
     private String stateProvince;
 
-    @OneToOne(mappedBy = "location")
-    @JoinColumn(name = "COUNTRY_ID")
+    @ManyToOne
+    @JoinColumn(name = "COUNTRY_ID" , referencedColumnName = "ID")
     private Country country;
 
     public Location() {
