@@ -29,11 +29,21 @@ public class Location {
     public Location() {
     }
 
+    public Location(String streetAddress, String postalCode, String city) {
+        this.streetAddress = streetAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+    }
+
     public Location(String streetAddress, String postalCode, String city, String stateProvince) {
         this.streetAddress = streetAddress;
         this.postalCode = postalCode;
         this.city = city;
         this.stateProvince = stateProvince;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
