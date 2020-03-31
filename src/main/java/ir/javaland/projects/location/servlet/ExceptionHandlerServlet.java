@@ -31,7 +31,7 @@ public class ExceptionHandlerServlet extends HttpServlet {
                 "<li>Exception Message:" + throwable.getMessage() + "</li>" +
                 "</ul>" +
                 "<br><br>" +
-                "<a href=\"/HrProject_war/login.html\">Back to Login Page</a>" +
+                "<a href=\"" + getServletContext().getContextPath() + "/login.html\">Back to Login Page</a>" +
                 "</body></html>");
     }
 }

@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.http.HttpResponse;
-import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "LocationServlet", urlPatterns = "/secured/location")
@@ -38,7 +34,7 @@ public class LocationServlet extends HttpServlet {
                 location.setPostalCode(postalCode);
                 location.setStreetAddress(streetAddress);
                 LocationRepos.getInstance().update(location);
-                response.sendRedirect("/HrProject_war/secured/location");
+                response.sendRedirect( getServletContext().getContextPath() + "/secured/location");
             } else if (action.equals("add")) {
                 String city = request.getParameter("city");
                 String stateProvince = request.getParameter("stateProvince");
@@ -46,7 +42,7 @@ public class LocationServlet extends HttpServlet {
                 String streetAddress = request.getParameter("streetAddress");
                 Location location = new Location(streetAddress, postalCode, city, stateProvince);
                 LocationRepos.getInstance().save(location);
-                response.sendRedirect("/HrProject_war/secured/location");
+                response.sendRedirect( getServletContext().getContextPath() + "/secured/location");
             }
         }
     }

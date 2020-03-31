@@ -1,5 +1,4 @@
 <%@ page import="ir.javaland.projects.location.model.Location" %>
-<%@ page import="ir.javaland.projects.location.repos.LocationRepos" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -7,7 +6,7 @@
     <title>Location List</title>
 </head>
 <body>
-<a href="/HrProject_war/secured/location?action=add">Add Location</a>
+<a href="${pageContext.request.contextPath}/secured/location?action=add">Add Location</a>
 <table border=10px>
     <tr>
         <td>Country Name</td>
@@ -34,8 +33,8 @@
         </td>
         <td><%=location.getStreetAddress()%>
         </td>
-        <td><a href="/HrProject_war/secured/location?action=delete&loc_id=<%=location.getId().toString()%>">Delete</a></td>
-        <td><a href="/HrProject_war/secured/location?action=edit&loc_id=<%=location.getId().toString()%>">Edit</a></td>
+        <td><a href="${pageContext.request.contextPath}/secured/location?action=delete&loc_id=<%=location.getId().toString()%>">Delete</a></td>
+        <td><a href="${pageContext.request.contextPath}/secured/location?action=edit&loc_id=<%=location.getId().toString()%>">Edit</a></td>
     </tr>
     <%
         }

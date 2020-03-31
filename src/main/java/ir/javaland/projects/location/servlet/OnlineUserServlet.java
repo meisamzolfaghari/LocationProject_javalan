@@ -22,7 +22,7 @@ public class OnlineUserServlet extends HttpServlet {
                 "<body>" +
                 "<h2>Online Users: </h2>" +
                 OnlineUserHandler.getOnlineUser() +
-                "<a href=\"/HrProject_war/logout\"> Logout </a>" +
+                "<a href=\"" + getServletContext().getContextPath() + "/logout\"> Logout </a>" +
                 "</body>" +
                 "</html>");
     }

@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = req.getSession(true);
             session.setAttribute("sec_data", user);
 //            session.setMaxInactiveInterval(30);
-            resp.sendRedirect("/HrProject_war/secured/location");
+            resp.sendRedirect(  getServletContext().getContextPath() + "/secured/location");
         }
     }
 }

@@ -12,7 +12,7 @@
     <title>Edit Location</title>
 </head>
 <body>
-<form action="/HrProject_war/secured/location" method="post">
+<form action="${pageContext.request.contextPath}/secured/location" method="post">
     <table>
         <jsp:useBean id="location" class="ir.javaland.projects.location.model.Location" scope="request"/>
         <tr>
@@ -23,15 +23,22 @@
             <td>Country Name</td>
         </tr>
         <tr>
-            <td><input name="city" value="<jsp:getProperty name="location" property="city"/>"></td>
-            <td><input name="postalCode" value="<jsp:getProperty name="location" property="postalCode"/>"></td>
-            <td><input name="stateProvince" value="<jsp:getProperty name="location" property="stateProvince"/>"></td>
-            <td><input name="streetAddress" value="<jsp:getProperty name="location" property="streetAddress"/>"></td>
-            <td><%=location.getCountry().getCountryName()%>
+<%--            EL Expression--%>
+            <td><input name="city" value=${location.city}></td>
+            <td><input name="postalCode" value=${location.postalCode}></td>
+<%--            El Expression on another way--%>
+            <td><input name="stateProvince" value=${location['stateProvince']}></td>
+<%--             we can use all three to get attribute of location--%>
+            <td><input name="streetAddress" value=<jsp:getProperty name="location" property="streetAddress"/>></td>
+
+            <td>${location.country.countryName}
+<%--            <td><%=location.getCountry().getCountryName()%>--%>
             </td>
+
         </tr>
     </table>
-    <input type="hidden" value="<jsp:getProperty name="location" property="id"/>" name="locationId"/>
+<%--    <input type="hidden" value="<jsp:getProperty name="location" property="id"/>" name="locationId"/>--%>
+    <input type="hidden" value=${location.id} name="locationId"/>
     <input type="hidden" value="edit" name="action"/>
     <input type="submit" value="Update Location"/>
 </form>

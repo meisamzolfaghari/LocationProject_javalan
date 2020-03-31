@@ -11,7 +11,7 @@
     <title>Add Location</title>
 </head>
 <body>
-<form action="/HrProject_war/secured/location" method="post">
+<form action="${pageContext.request.contextPath}/secured/location" method="post">
     <table>
         <tr>
             <td>City</td>
